@@ -54,3 +54,5 @@ const subjects = {
   // 5. Получить массив из предметов и отсортировать по количеству преподавателей на факультете от большего к меньшему
   const resultSort = arr.sort((a, b) => a.teachers + b.teachers)
   console.log(resultSort);
+
+  
