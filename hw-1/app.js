@@ -26,31 +26,41 @@ const subjects = {
   
   
   // 1. Создать строку из названий предметов написаных через запятую
-  const items = Object.keys(subjects).join()
-  console.log(items);
+  function getStringSubjects(subjects) {
+    return Object.keys(subjects).join()
+  }
+  const items = getStringSubjects(subjects)
+
+  
   
   
   // 2. Посчитать общее количество студентов и учителей на всех предметах
-  function getStudentsAndTeacersCount(obj) {
-    const values = Object.values(obj)
+  function getObjectValues(subjects) {
+    return Object.values(subjects)
+  }
+  function getStudentsAndTeacersCount(subjects) {
+    const values = Object.values(subjects)
     const allStudens = values.reduce((acc, item) => acc + item.students, 0)
     const allTeachers = values.reduce((acc, item) => acc + item.teachers, 0)
-    return `Всего ${allStudens} студентов и ${allTeachers} учителей`
+    // return `Всего ${allStudens} студентов и ${allTeachers} учителей`
+    return allStudens + allTeachers
   }
     
   
   // 3. Получить среднее количество студентов на всех пердметах
-  function getAverageStudentsCount(obj) {
-    const values = Object.values(obj)
-    const averageStudents = values.reduce((acc, item) => acc + item.students, 0) / Object.keys(subjects).length
-    return averageStudents
+  function getAverageStudentsCount(subjects) {
+    const values = getObjectValues(subjects)
+    const subjectsLenght = Object.keys(subjects).length
+    return values.reduce((acc, item) => acc + item.students, 0) / subjectsLenght
   }
   
   
   // 4. Создать массив из объектов предметов
-  const arr = Object.values(subjects)
-  console.log(arr);
+  const arr = getObjectValues(subjects)
+  // console.log(arr);
   
   // 5. Получить массив из предметов и отсортировать по количеству преподавателей на факультете от большего к меньшему
   const resultSort = arr.sort((a, b) => a.teachers + b.teachers)
-  console.log(resultSort);
+  // console.log(resultSort);
+
+  
